@@ -100,7 +100,8 @@ class Annotator(object):
           bytes_value = result.value.encode()
         labels['value'] = self.string_to_label_value(bytes_value)
         labels['hex'] = binascii.hexlify(bytes_value).decode()
-        result = snmp.ResultTuple('NaN', 'ANNOTATED')
+        # Always return 1 in labelification process
+        result = snmp.ResultTuple(1, 'ANNOTATED')
 
       # Do something almost like labelification for enums
       if enum:
